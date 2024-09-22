@@ -1,12 +1,30 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    "Trending Movies" : {
+    "Now playing" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Trending Movies"
+            "value" : "Now playing"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "En cartelera"
+          }
+        }
+      }
+    },
+    "Trending movies..." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Trending movies..."
           }
         },
         "es-419" : {
