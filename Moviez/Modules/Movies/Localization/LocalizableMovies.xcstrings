@@ -18,6 +18,40 @@
         }
       }
     },
+    "Ooops!! Something happened..." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ooops!! Something happened..."
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ooops!!! Algo pasó!"
+          }
+        }
+      }
+    },
+    "Please try again" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Please try again"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Intenta de nuevo"
+          }
+        }
+      }
+    },
     "Trending movies..." : {
       "extractionState" : "manual",
       "localizations" : {

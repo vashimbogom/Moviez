@@ -8,22 +8,24 @@
 import SwiftUI
 
 struct MoviesDashboardView: View {
+    
+    private let MoviesContainer = MoviesDIContainer()
+    
     var body: some View {
         NavigationView {
             ScrollView(.vertical, showsIndicators: false) {
                 VStack {
                     
-                    MoviesText("Trending movies...")
+                    MoviesText(AppConstants.MovieStrings.trendingMoviesTitle)
                         .font(.title)
                         .fontWeight(.bold)
                     
-                    //Trending Movies List
+                    MoviesContainer.TrendingMoviesList
                     
-                    MoviesText("Now playing")
+                    MoviesText(AppConstants.MovieStrings.nowPlayingMoviesTitle)
                         .font(.title)
                         .fontWeight(.bold)
-                    //Now Playing Grid
-                    
+                    //TODO: - Create Now Playing Grid
 
                 }
                 .padding(.vertical)

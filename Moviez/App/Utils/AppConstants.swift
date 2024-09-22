@@ -6,5 +6,27 @@
 //
 
 struct AppConstants {
-    static let moviesLocalizationTable = "LocalizableMovies"
+    
+    enum Movies {
+        
+        static let localizationTable = "LocalizableMovies"
+        
+        enum Icons {
+            static let errorViewIcon = "exclamationmark.triangle.fill"
+            static let moviePlaceholderIcon = "movieclapper"
+        }
+    }
+    
+    enum MovieStrings {
+        static let trendingMoviesTitle = "Trending movies..."
+        static let nowPlayingMoviesTitle = "Now playing"
+        
+        enum Errors {
+            static let title = "Ooops!! Something happened..."
+            static let tryAgain = "Please try again"
+        }
+        
+        
+    }
+    
 }

@@ -5,6 +5,10 @@
 //  Created by Lord Jose Lopez on 21/09/24.
 //
 
-struct MoviesDataListDTO {
+struct MoviesDataListDTO: Decodable {
     
+    let page: Int
+    let results: [MovieDataDTO]
+    let total_pages: Int
+    let total_results: Int
 }

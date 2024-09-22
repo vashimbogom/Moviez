@@ -6,5 +6,5 @@
 //
 
 protocol MoviesRepository {
-
+    func fetchTrendingMoviesList() async throws -> MoviesDataListDTO
 }

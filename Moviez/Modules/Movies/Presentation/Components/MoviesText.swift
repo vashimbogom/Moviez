@@ -16,10 +16,10 @@ struct MoviesText: View {
     }
     
     var body: some View {
-        Text(LocalizedStringResource(String.LocalizationValue(text), table: AppConstants.moviesLocalizationTable))
+        Text(LocalizedStringResource(String.LocalizationValue(text), table: AppConstants.Movies.localizationTable))
     }
 }
 
 #Preview {
-    MoviesText("Trending movies...")
+    MoviesText(AppConstants.MovieStrings.trendingMoviesTitle)
 }
