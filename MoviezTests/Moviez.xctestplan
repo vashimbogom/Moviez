@@ -1,0 +1,38 @@
+{
+  "configurations" : [
+    {
+      "id" : "4EAA405A-3F56-4636-957D-A512E1A0413D",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:Moviez.xcodeproj",
+      "identifier" : "0FDC82362C9F4460008373A7",
+      "name" : "Moviez"
+    }
+  },
+  "testTargets" : [
+    {
+      "parallelizable" : false,
+      "target" : {
+        "containerPath" : "container:Moviez.xcodeproj",
+        "identifier" : "0FDC82482C9F4461008373A7",
+        "name" : "MoviezTests"
+      }
+    },
+    {
+      "enabled" : false,
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:Moviez.xcodeproj",
+        "identifier" : "0FDC82522C9F4461008373A7",
+        "name" : "MoviezUITests"
+      }
+    }
+  ],
+  "version" : 1
+}

@@ -27,11 +27,25 @@
 		0FDC82372C9F4460008373A7 /* Moviez.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Moviez.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0FDC82492C9F4461008373A7 /* MoviezTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MoviezTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0FDC82532C9F4461008373A7 /* MoviezUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MoviezUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		0FDC835F2C9F97C9008373A7 /* Moviez.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; name = Moviez.xctestplan; path = MoviezTests/Moviez.xctestplan; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		0FDC835E2C9F924F008373A7 /* Exceptions for "Moviez" folder in "Moviez" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 0FDC82362C9F4460008373A7 /* Moviez */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		0FDC82392C9F4460008373A7 /* Moviez */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				0FDC835E2C9F924F008373A7 /* Exceptions for "Moviez" folder in "Moviez" target */,
+			);
 			path = Moviez;
 			sourceTree = "<group>";
 		};
@@ -75,6 +89,7 @@
 		0FDC822E2C9F4460008373A7 = {
 			isa = PBXGroup;
 			children = (
+				0FDC835F2C9F97C9008373A7 /* Moviez.xctestplan */,
 				0FDC82392C9F4460008373A7 /* Moviez */,
 				0FDC824C2C9F4461008373A7 /* MoviezTests */,
 				0FDC82562C9F4461008373A7 /* MoviezUITests */,
@@ -271,6 +286,8 @@
 /* Begin XCBuildConfiguration section */
 		0FDC825B2C9F4461008373A7 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReferenceAnchor = 0FDC82392C9F4460008373A7 /* Moviez */;
+			baseConfigurationReferenceRelativePath = Networking/Configuration/EnvConfig.xcconfig;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -334,6 +351,8 @@
 		};
 		0FDC825C2C9F4461008373A7 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReferenceAnchor = 0FDC82392C9F4460008373A7 /* Moviez */;
+			baseConfigurationReferenceRelativePath = Networking/Configuration/EnvConfig.xcconfig;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -398,6 +417,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"Moviez/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Moviez/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -426,6 +446,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"Moviez/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Moviez/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

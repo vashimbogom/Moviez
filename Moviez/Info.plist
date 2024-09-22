@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>API_TOKEN</key>
+	<string>$(API_TOKEN)</string>
+	<key>APP_ENVIRONMENT</key>
+	<string>$(APP_ENVIRONMENT)</string>
+	<key>HOST_SCHEME</key>
+	<string>$(HOST_SCHEME)</string>
+	<key>HOST_BASE_URL</key>
+	<string>$(HOST_BASE_URL)</string>
+	<key>HOST_IMAGE_URL</key>
+	<string>$(HOST_IMAGE_URL)</string>
+</dict>
+</plist>
