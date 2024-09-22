@@ -8,15 +8,24 @@
 @testable import Moviez
 
 final class MockMoviesRepository: MoviesRepository {
-
-    var response: MoviesDataListDTO?
+    
+    var moviesListesponse: MoviesDataListDTO?
+    var movieDetailsResponse: MovieDetailDTO?
+    
     var error: Error?
 
     func fetchTrendingMoviesList() async throws -> MoviesDataListDTO {
         if let error {
             throw error
         }
-        return response!
+        return moviesListesponse!
+    }
+    
+    func fetchMovieDetails(movieID: Int) async throws -> MovieDetailDTO {
+        if let error {
+            throw error
+        }
+        return movieDetailsResponse!
     }
 
 }

@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 class MoviesDIContainer {
     
@@ -23,4 +24,9 @@ class MoviesDIContainer {
         return moviesModule.generateTrendingMoviesListView()
     }()
 
+    //MARK: - Movie Detail Views
+    func getMovieDetailsView(movieID: Int) -> some View {
+        let moviesModule = MoviesModule(apiDataTransferService: apiDataTransferService)
+        return moviesModule.generateMovieDetailsView(movieID: movieID)
+    }
 }

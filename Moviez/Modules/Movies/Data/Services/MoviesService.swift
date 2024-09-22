@@ -7,6 +7,7 @@
 
 protocol MoviesService {
     func fetchTrendingMoviesList() async throws -> MoviesDataListDTO
+    func fetchMovieDetail(movieID: Int) async throws -> MovieDetailDTO
 }
 
 final class DefaultMoviesService: MoviesService {
@@ -17,7 +18,10 @@ final class DefaultMoviesService: MoviesService {
     }
     
     func fetchTrendingMoviesList() async throws -> MoviesDataListDTO {
-        
         try await apiDataService.request(for: MovieEndpoints.trendingMovies)
+    }
+    
+    func fetchMovieDetail(movieID: Int) async throws -> MovieDetailDTO {
+        try await apiDataService.request(for: MovieEndpoints.movieDetails(movieId: "\(movieID)"))
     }
 }

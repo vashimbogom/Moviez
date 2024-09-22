@@ -25,13 +25,13 @@ final class ShowTrendingMoviesUseCaseTests: XCTestCase {
         mockMoviesRepository = nil
     }
 
-    func testProductUseCaseSuccess() async throws {
-        mockMoviesRepository.response = MockData.moviesPage
+    func testShowTrendingMoviesSuccess() async throws {
+        mockMoviesRepository.moviesListesponse = MovieViews_Previews.moviesPage
         let trendinMoviesList = try await showTrendingMoviesUseCase.fetchTrendingMoviesList()
         XCTAssertNotNil(trendinMoviesList)
     }
     
-    func testProductUseCaseFailure() async throws {
+    func testShowTrendingMoviesFailure() async throws {
         mockMoviesRepository.error = ServiceError.failed
         do {
             _ = try await showTrendingMoviesUseCase.fetchTrendingMoviesList()

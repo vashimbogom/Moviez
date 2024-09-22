@@ -25,13 +25,29 @@ final class MoviesRepositoryTests: XCTestCase {
         mockMoviesService = nil
     }
 
-    func testProductRepositorySuccess() async throws {
-        mockMoviesService.response = MockData.moviesPage
+    func testMoviesRepository_fetchMoviesList_Success() async throws {
+        mockMoviesService.movieListResponse = MovieViews_Previews.moviesPage
         let moviesList = try await moviesRepository.fetchTrendingMoviesList()
         XCTAssertNotNil(moviesList)
     }
     
-    func testProductRepositoryFailure() async throws {
+    func testMoviesRepository_fetchMoviesList_Failure() async throws {
+        mockMoviesService.error = ServiceError.failed
+        do {
+            _ = try await moviesRepository.fetchTrendingMoviesList()
+            XCTFail("Success not expected")
+        } catch {
+            XCTAssertEqual(error as! ServiceError, ServiceError.failed)
+        }
+    }
+    
+    func testMoviesRepository_fetchMovieDetails_Success() async throws {
+        mockMoviesService.movieDetailsResponse = MovieViews_Previews.movieDetailsDomain
+        let movieDetails = try await moviesRepository.fetchMovieDetails(movieID: 13)
+        XCTAssertNotNil(movieDetails)
+    }
+    
+    func testMoviesRepository_fetchMovieDetails_Failure() async throws {
         mockMoviesService.error = ServiceError.failed
         do {
             _ = try await moviesRepository.fetchTrendingMoviesList()

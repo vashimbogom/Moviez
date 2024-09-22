@@ -36,4 +36,15 @@ final class MoviesModule {
         DefaultMoviesService(apiDataService: apiDataTransferService)
     }
     
+    //MARK: - Movie Details -> Router like property Aproach
+    func generateMovieDetailsView(movieID: Int) -> MovieDetailView<MovieDetailsViewModel> {
+        
+        let service = DefaultMoviesService(apiDataService: apiDataTransferService)
+        let repository = DefaultMoviesRepository(service: service)
+        let useCase = DefaultShowMovieDetailsUseCase(repository: repository)
+        let viewModel = MovieDetailsViewModel(movieID: movieID, useCase: useCase)
+        
+        return MovieDetailView(viewModel: viewModel)
+    }
+    
 }

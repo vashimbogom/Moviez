@@ -27,7 +27,7 @@ final class MoviesListViewModelTests: XCTestCase {
 
     func testMoviesListViewModelSuccess() async throws {
         XCTAssertTrue(moviesListViewModel.shouldShowLoader())
-        mockShowTrendingMoviesUseCase.response = MockData.moviesPage
+        mockShowTrendingMoviesUseCase.response = MovieViews_Previews.moviesPage
         await moviesListViewModel.fetchMovies()
         XCTAssertTrue(moviesListViewModel.movies.count == 20)
         XCTAssertEqual(moviesListViewModel.movies.first?.title, "Deadpool & Wolverine")

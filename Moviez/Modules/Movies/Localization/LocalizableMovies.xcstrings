@@ -1,7 +1,44 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "Average Vote" : {
+      "comment" : "Movie Average Vote Number",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Average Vote"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Votos promedio"
+          }
+        }
+      }
+    },
+    "Languages" : {
+      "comment" : "Movie Languages title",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Languages"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lenguajes"
+          }
+        }
+      }
+    },
     "Now playing" : {
+      "comment" : "Now Playing Title",
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
@@ -19,6 +56,7 @@
       }
     },
     "Ooops!! Something happened..." : {
+      "comment" : "Error message Title",
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
@@ -36,6 +74,7 @@
       }
     },
     "Please try again" : {
+      "comment" : "Error message action  to try again",
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
@@ -52,7 +91,80 @@
         }
       }
     },
+    "Popularity" : {
+      "comment" : "Movie popularity number",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Popularity"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Popularidad"
+          }
+        }
+      }
+    },
+    "Release Date" : {
+      "comment" : "Movie Release Date",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Release Date"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fecha de publicación"
+          }
+        }
+      }
+    },
+    "Status" : {
+      "comment" : "Movie release Status",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Status"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Estatus"
+          }
+        }
+      }
+    },
+    "Title" : {
+      "comment" : "Movie Title",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Title"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Título"
+          }
+        }
+      }
+    },
     "Trending movies..." : {
+      "comment" : "Trending movies title",
       "extractionState" : "manual",
       "localizations" : {
         "en" : {

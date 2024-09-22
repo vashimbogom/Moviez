@@ -4,6 +4,7 @@
 //
 //  Created by Lord Jose Lopez on 22/09/24.
 //
+import Foundation
 
 enum MovieEndpoints {
     case trendingMovies
@@ -27,11 +28,11 @@ extension MovieEndpoints: Endpoint {
         } else {
             switch self {
             case .trendingMovies:
-                return "TrendingMoviesListMock.json"
+                return AppConstants.Movies.Mocks.trendingMoviesJSONFile
             case .movieDetails(_):
-                return "MovieDetailsMock.json"
+                return AppConstants.Movies.Mocks.movieDetailsJSONFile
             case .nowPlayingMovies(_):
-                return "NowPlayingMoviesMock.json"
+                return AppConstants.Movies.Mocks.nowPlayingMoviesJSONFile
 
             }
         }
@@ -51,22 +52,28 @@ extension MovieEndpoints: Endpoint {
     var params: [String: Any]? {
         
         var globalParams: [String: Any] = [
-            "include_adult" : false,
-            "include_video" : false,
-            "language" : "en-US"
-            
+            "include_video" : false
         ]
         
         switch self {
         case .trendingMovies:
+            globalParams["include_adult"] = false
             globalParams["sort_by"] = "popularity.desc"
             globalParams["page"] = "1"
         case .movieDetails(_):
-            globalParams["language"] = "en-US"
+            globalParams["include_video"] = false
         case .nowPlayingMovies(let pageNumber):
+            globalParams["include_adult"] = false
             globalParams["sort_by"] = "popularity.desc"
             globalParams["page"] = "\(pageNumber)"
         }
+        
+        if let langCode = Locale.current.language.languageCode?.identifier.lowercased(), langCode.contains("en") {
+            globalParams["language"] = "en-US"
+        } else {
+            globalParams["language"] = "es-MX"
+        }
+        
         
         return globalParams
         

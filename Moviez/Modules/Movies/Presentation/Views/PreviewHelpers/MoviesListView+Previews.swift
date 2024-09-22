@@ -10,17 +10,20 @@ import UIKit
 
 struct MovieViews_Previews {
     
+    //MARK: - Movies List
+    
     static func getListViewModel() -> MoviesListViewModelMock {
         return MoviesListViewModelMock()
     }
     
     static var moviesData: [MovieData] {
-        Array(moviesList.prefix(3))
+        moviesList
     }
     
     static var moviePosterURL: URL {
-        URL(string: "https://image.tmdb.org/t/p/w500/8cdWjvZQUExUUTzyp4t6EDMubfO.jpg")!
+        URL(string: AppConstants.Movies.Mocks.imageURL)!
     }
+    
     static var moviesList: [MovieData] {
         return domainMovies.map { .init(from: $0) }
     }
@@ -34,7 +37,7 @@ struct MovieViews_Previews {
     }
     
     static var moviesListRawData: Data {
-        loadJsonData("TrendingMoviesListMock.json")
+        loadJsonData(AppConstants.Movies.Mocks.trendingMoviesJSONFile)
     }
     
     private static func loadJsonData(_ mockFileName: String) -> Data {
@@ -50,9 +53,41 @@ struct MovieViews_Previews {
         var movies: [MovieData] = moviesData
         var isEmpty: Bool { return movies.isEmpty }
         var isError: Bool = false
-        var error: String = "Error"
+        var error: String = AppConstants.Movies.Mocks.errorMessage
         func fetchMovies() async {}
         func shouldShowLoader() -> Bool {isEmpty && isError}
     }
+}
+
+extension MovieViews_Previews {
     
+    //MARK: - Movies Details
+    
+    static func getMovieDetailsViewModel() -> MovieDetailsViewModelMock {
+        return MovieDetailsViewModelMock()
+    }
+    
+    static var movieDetails: MovieDetail {
+        return .init(from: movieDetailsDomain)
+    }
+    
+    static var movieDetailsDomain: MovieDetailDTO {
+        try! JSONDecoder().decode( MovieDetailDTO.self, from: movieDetailsRawData)
+    }
+    
+    static var movieDetailsRawData: Data {
+        loadJsonData(AppConstants.Movies.Mocks.movieDetailsJSONFile)
+    }
+    
+    class MovieDetailsViewModelMock: MovieDetailsViewModelProtocol {
+
+        var movieID: Int = 533535
+        var movie: MovieDetail = movieDetails
+        var isEmpty: Bool { return false }
+        var isError: Bool = false
+        var error: String = AppConstants.Movies.Mocks.errorMessage
+        
+        func fetchMovieDetails() async { }
+        func shouldShowLoader() -> Bool {isEmpty && isError}
+    }
 }

@@ -11,6 +11,7 @@ struct MoviesCarouselView: View {
     
     @State var index = 0
     @Binding var movies: [MovieData]
+    private let MoviesContainer = MoviesDIContainer()
     
     var body: some View {
         TabView(selection: self.$index) {
@@ -18,7 +19,7 @@ struct MoviesCarouselView: View {
                 
                 NavigationLink {
                     
-                    //TODO: Nav to Movie Details View
+                    MoviesContainer.getMovieDetailsView(movieID: self.movies[index].id)
                     
                 } label: {
                     

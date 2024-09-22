@@ -9,13 +9,21 @@
 
 final class MockMoviesService: MoviesService {
         
-    var response: MoviesDataListDTO?
+    var movieListResponse: MoviesDataListDTO?
+    var movieDetailsResponse: MovieDetailDTO?
     var error: Error?
     
     func fetchTrendingMoviesList() async throws -> MoviesDataListDTO {
         if let error {
             throw error
         }
-        return response!
+        return movieListResponse!
+    }
+    
+    func fetchMovieDetail(movieID: Int) async throws -> Moviez.MovieDetailDTO {
+        if let error {
+            throw error
+        }
+        return movieDetailsResponse!
     }
 }

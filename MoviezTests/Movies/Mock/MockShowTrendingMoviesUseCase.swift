@@ -25,5 +25,4 @@ class MockShowTrendingMoviesUseCase: ShowTrendingMoviesUseCase {
         }
         return response!
     }
-
 }

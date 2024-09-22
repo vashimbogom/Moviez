@@ -12,7 +12,7 @@ import SwiftData
 struct MoviezApp: App {
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
-            
+            FavoriteMovie.self
         ])
         let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
 

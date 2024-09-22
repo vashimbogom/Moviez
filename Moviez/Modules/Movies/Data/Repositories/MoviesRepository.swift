@@ -16,4 +16,8 @@ final class DefaultMoviesRepository: MoviesRepository {
     func fetchTrendingMoviesList() async throws -> MoviesDataListDTO {
         try await service.fetchTrendingMoviesList()
     }
+    
+    func fetchMovieDetails(movieID: Int) async throws -> MovieDetailDTO {
+        try await service.fetchMovieDetail(movieID: movieID)
+    }
 }
