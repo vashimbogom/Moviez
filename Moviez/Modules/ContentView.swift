@@ -10,10 +10,15 @@ import SwiftUI
 struct ContentView: View {
 
     var body: some View {
-        Text("MovieZ App")
+        Text(LocalizedStringResource("Trending Movies", table: "LocalizableMovies"))
     }
 }
 
-#Preview {
+#Preview("EN") {
     ContentView()
+}
+
+#Preview("ES") {
+    ContentView()
+        .environment(\.locale, Locale(identifier: "es-419"))
 }
