@@ -68,12 +68,11 @@ extension MovieEndpoints: Endpoint {
             globalParams["page"] = "\(pageNumber)"
         }
         
-        if let langCode = Locale.current.language.languageCode?.identifier.lowercased(), langCode.contains("en") {
-            globalParams["language"] = "en-US"
-        } else {
+        if let langCode = Locale.current.language.languageCode?.identifier.lowercased(), langCode.contains("es") {
             globalParams["language"] = "es-MX"
+        } else {
+            globalParams["language"] = "en-US"
         }
-        
         
         return globalParams
         
