@@ -11,6 +11,7 @@ struct PlayingNowMoviesListView<ViewModel>: View where ViewModel: MoviesListView
     
     @ObservedObject private var viewModel: ViewModel
     @State var columns = Array(repeating: GridItem(.flexible(), spacing: 13), count: 2)
+    @State var searchText: String = ""
     @Environment(\.colorScheme) var colorScheme
     
     private let MovieContainer = MoviesDIContainer()
@@ -48,41 +49,83 @@ struct PlayingNowMoviesListView<ViewModel>: View where ViewModel: MoviesListView
                     
                     Spacer()
                     
-                    Button {
-                        
-                        withAnimation(.easeInOut) {
-                            viewModel.sortMovies()
-                        }
-                        
-                    } label: {
-                        Image(
-                            systemName: AppConstants.Movies.Icons.sortingIcon
-                        )
-                        .font(.system(size: 25))
-                        .foregroundColor(colorScheme == .dark ? .accentColor : .black)
-                    }
-                    
-                    Button {
-                        
-                        withAnimation(.easeOut) {
-                            if self.columns.count == 2 {
-                                self.columns.removeLast()
-                            } else {
-                                self.columns.append(GridItem(.flexible(), spacing: 15))
-                            }
-                        }
-                        
-                    } label: {
-                        Image(
-                            systemName: self.columns.count == 2 ?
-                            AppConstants.Movies.Icons.listGridIcon
-                            : AppConstants.Movies.Icons.squareGridIcon
-                        )
-                        .font(.system(size: self.columns.count == 2 ? 23 : 25))
-                        .foregroundColor(colorScheme == .dark ? .accentColor : .black)
-                    }
                 }
                 .padding(.top)
+                .padding(.horizontal)
+                
+                HStack {
+                    
+                    HStack {
+                        Image(systemName: AppConstants.Movies.Icons.searchIcon)
+                            .foregroundColor(
+                                colorScheme == .dark ? .white : .gray
+                            )
+                        
+                        TextField(text: $searchText) {
+                            Text(LocalizedStringResource(String.LocalizationValue(AppConstants.MovieStrings.search), table: AppConstants.Movies.localizationTable))
+                        }
+                        .autocapitalization(.none)
+                        .autocorrectionDisabled()
+                        .font(Font.system(size: 21))
+                        .foregroundColor(
+                            colorScheme == .dark ? .white : .black
+                        )
+                        .onChange(of: $searchText.wrappedValue) { _, newValue in
+                            self.viewModel.searchInFetchedMoviesWithTitleLike(newValue)
+                            
+                        }
+                        
+                        Button(action: {
+                            self.searchText = ""
+                        }) {
+                            Image(systemName: AppConstants.Movies.Icons.clearIcon)
+                                .foregroundColor(.secondary)
+                        }
+                        
+                    }
+                    .padding(7)
+                    .background(
+                        colorScheme == .dark ? .gray : .white
+                    )
+                    .cornerRadius(50)
+                    
+                    HStack {
+                        Button {
+                            
+                            withAnimation(.easeInOut) {
+                                viewModel.sortMovies()
+                            }
+                            
+                        } label: {
+                            Image(
+                                systemName: AppConstants.Movies.Icons.sortingIcon
+                            )
+                            .font(.system(size: 25))
+                            .foregroundColor(colorScheme == .dark ? .accentColor : .black)
+                        }
+                        
+                        Button {
+                            
+                            withAnimation(.easeOut) {
+                                if self.columns.count == 2 {
+                                    self.columns.removeLast()
+                                } else {
+                                    self.columns.append(GridItem(.flexible(), spacing: 15))
+                                }
+                            }
+                            
+                        } label: {
+                            Image(
+                                systemName: self.columns.count == 2 ?
+                                AppConstants.Movies.Icons.listGridIcon
+                                : AppConstants.Movies.Icons.squareGridIcon
+                            )
+                            .font(.system(size: self.columns.count == 2 ? 23 : 25))
+                            .foregroundColor(colorScheme == .dark ? .accentColor : .black)
+                        }
+                    }
+                }
+                .padding(.bottom)
                 .padding(.horizontal)
                 
                 LazyVGrid(columns: columns, spacing: 25) {

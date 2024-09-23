@@ -19,6 +19,7 @@ protocol MoviesListViewModelProtocol: ObservableObject {
     func isLastMovie(_ movie: MovieData) -> Bool
     func sortMovies()
     func fetchMovies() async
+    func searchInFetchedMoviesWithTitleLike(_ searchText: String)
 }
 
 final class MoviesListViewModel: MoviesListViewModelProtocol {
@@ -29,19 +30,23 @@ final class MoviesListViewModel: MoviesListViewModelProtocol {
     
     var isEmpty: Bool { return movies.isEmpty }
     var pageNumber: Int = 1
+    var isSearching = false
     
     private let moviesListUseCase: ShowMoviesListUseCase!
     private var sortAscending = true
+    private var fetchedMovies: [MovieData] = []
     
     init(useCase: ShowMoviesListUseCase) {
         self.moviesListUseCase = useCase
     }
     
     @MainActor func fetchMovies() async {
+        if isSearching { return }
         do {
             
             let moviesList = try await moviesListUseCase.fetchMoviesList(pageNumber: pageNumber)
             self.movies += transformFetchedMovies(movies: moviesList.results)
+            self.fetchedMovies = movies
             self.isError = false
             
             pageNumber = 1 + (pageNumber <= moviesList.total_pages ? pageNumber : 0)
@@ -55,12 +60,24 @@ final class MoviesListViewModel: MoviesListViewModelProtocol {
         }
     }
     
+    func searchInFetchedMoviesWithTitleLike(_ searchText: String) {
+        if searchText.trimmingCharacters(in: .whitespacesAndNewlines) == "" {
+            self.movies = self.fetchedMovies
+            isSearching = false
+            
+        } else {
+            isSearching = true
+            self.movies = self.fetchedMovies.filter { $0.title.localizedStandardContains(searchText) }
+            
+        }
+    }
+    
     private func transformFetchedMovies(movies: [MovieDataDTO]) -> [MovieData] {
         movies.map { MovieData(from: $0) }
     }
     
     func shouldShowLoader() -> Bool {
-        (isEmpty && !isError)
+        (isEmpty && !isError && !isSearching)
     }
     
     func isLastMovie(_ movie: MovieData) -> Bool {

@@ -50,7 +50,7 @@ struct MovieViews_Previews {
     
     class MoviesListViewModelMock: MoviesListViewModelProtocol {
         
-        var movies: [MovieData] = moviesData
+        var movies: [MovieData] = Array(moviesData.prefix(3))
         var pageNumber: Int = 1
         var isEmpty: Bool { return movies.isEmpty }
         var isError: Bool = false
@@ -59,6 +59,7 @@ struct MovieViews_Previews {
         func isLastMovie(_ movie: MovieData) -> Bool { false }
         func shouldShowLoader() -> Bool {isEmpty && isError}
         func sortMovies() {}
+        func searchInFetchedMoviesWithTitleLike(_ searchText: String) {}
     }
 }
 

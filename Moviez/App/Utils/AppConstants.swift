@@ -19,6 +19,8 @@ struct AppConstants {
             static let listGridIcon = "rectangle.grid.1x2.fill"
             static let squareGridIcon = "square.grid.2x2.fill"
             static let sortingIcon = "arrow.up.arrow.down"
+            static let searchIcon = "magnifyingglass"
+            static let clearIcon = "multiply.circle.fill"
         }
         
         enum AnimationIdentifiers {
@@ -47,7 +49,7 @@ struct AppConstants {
         static let originalLanguage = "Original Language"
         static let averageVote = "Average Vote"
         static let status = "Status"
-        
+        static let search = "Search"
         
         enum Errors {
             static let title = "Ooops!! Something happened..."

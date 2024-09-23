@@ -145,6 +145,24 @@
         }
       }
     },
+    "Search" : {
+      "comment" : "Search title",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Search"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Buscar"
+          }
+        }
+      }
+    },
     "Status" : {
       "comment" : "Movie release Status",
       "extractionState" : "manual",
