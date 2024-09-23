@@ -10,6 +10,7 @@ import UIKit
 
 protocol DataTransferService {
     func request<T: Decodable>(for endpoint: Endpoint) async throws -> T
+    func request<T: Decodable>(request: NetworkRequest) async throws -> T
 }
 
 final class DefaultDataTransferService: DataTransferService {

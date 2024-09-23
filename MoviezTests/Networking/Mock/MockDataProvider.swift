@@ -52,11 +52,18 @@ struct MockEntityDTO: Decodable, Identifiable {
 
 enum MockEndpoints {
     case something
+    case notExistingResource
 }
 
 extension MockEndpoints: Endpoint {
     var path: String {
-        "/path"
+        switch(self) {
+        case .something:
+            "MockEntities"
+        case .notExistingResource:
+            "nothing"
+        }
+        
     }
     
     var method: Moviez.HTTPMethod {

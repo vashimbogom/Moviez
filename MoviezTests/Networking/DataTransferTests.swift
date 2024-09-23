@@ -25,15 +25,31 @@ final class DataTransferTests: XCTestCase {
         dataTransferService = nil
     }
     
+    func testRequest_MockRequest_SuccessResponse() async throws {
+        networkManager.data = MockDataProvider.entitiesRawData
+        let EntityPage = try await getMockEntityData(for: MockEndpoints.something)
+        XCTAssertEqual(EntityPage.data.count, 3)
+    }
+    
+    func testRequest_MockRequest_FailureResponse() async throws {
+        do {
+            networkManager.error = NSError(domain: "Failed", code: 0)
+            _ = try await getMockEntityData(for: MockEndpoints.notExistingResource)
+            XCTFail("Should not succeed")
+        } catch {
+            XCTAssertNotNil(error)
+        }
+    }
+    
+    func getMockEntityData(for endpoint: Endpoint) async throws -> MockEntityListDTO {
+        try await dataTransferService.request(for: endpoint)
+    }
+    
     func testRequestSuccessResponse() async throws {
         networkManager.data = MockDataProvider.entitiesRawData
         let request = DefaultNetworkRequest(path: "/movies")
         let EntityPage = try await getEntityData(request: request)
         XCTAssertEqual(EntityPage.data.count, 3)
-    }
-    
-    func getEntityData(request: NetworkRequest) async throws -> MockEntityListDTO {
-        try await dataTransferService.request(for: MockEndpoints.something)
     }
     
     func testRequestFailureCase() async throws {
@@ -45,6 +61,10 @@ final class DataTransferTests: XCTestCase {
         } catch {
             XCTAssertNotNil(error)
         }
+    }
+    
+    func getEntityData(request: NetworkRequest) async throws -> MockEntityListDTO {
+        try await dataTransferService.request(request: request)
     }
     
     func testDecodingFailureCase() async throws {
