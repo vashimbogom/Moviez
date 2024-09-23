@@ -27,17 +27,21 @@ final class MoviesListViewModelTests: XCTestCase {
 
     func testMoviesListViewModelSuccess() async throws {
         XCTAssertTrue(moviesListViewModel.shouldShowLoader())
+        XCTAssertTrue(moviesListViewModel.pageNumber == 1)
         mockShowTrendingMoviesUseCase.response = MovieViews_Previews.moviesPage
         await moviesListViewModel.fetchMovies()
         XCTAssertTrue(moviesListViewModel.movies.count == 20)
         XCTAssertEqual(moviesListViewModel.movies.first?.title, "Deadpool & Wolverine")
+        XCTAssertTrue(moviesListViewModel.pageNumber == 2)
         XCTAssertFalse(moviesListViewModel.shouldShowLoader())
     }
     
     func testMoviesListViewModelFailure() async throws {
         mockShowTrendingMoviesUseCase.error = ServiceError.failed
+        XCTAssertTrue(moviesListViewModel.pageNumber == 1)
         await moviesListViewModel.fetchMovies()
         XCTAssertTrue(moviesListViewModel.movies.count == 0)
+        XCTAssertTrue(moviesListViewModel.pageNumber == 1)
         XCTAssertNotNil(moviesListViewModel.error)
         XCTAssertEqual(moviesListViewModel.error, ServiceError.failed.description)
         XCTAssertTrue(moviesListViewModel.isError)

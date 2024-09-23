@@ -51,10 +51,12 @@ struct MovieViews_Previews {
     class MoviesListViewModelMock: MoviesListViewModelProtocol {
         
         var movies: [MovieData] = moviesData
+        var pageNumber: Int = 1
         var isEmpty: Bool { return movies.isEmpty }
         var isError: Bool = false
         var error: String = AppConstants.Movies.Mocks.errorMessage
         func fetchMovies() async {}
+        func isLastMovie(_ movie: MovieData) -> Bool { false }
         func shouldShowLoader() -> Bool {isEmpty && isError}
     }
 }

@@ -10,11 +10,13 @@ import Foundation
 protocol MoviesListViewModelProtocol: ObservableObject {
     
     var movies: [MovieData] {get set}
+    var pageNumber: Int {get set}
     var isError: Bool {get}
     var error: String {get}
     var isEmpty: Bool {get}
     
     func shouldShowLoader() -> Bool
+    func isLastMovie(_ movie: MovieData) -> Bool 
     func fetchMovies() async
 }
 
@@ -25,7 +27,7 @@ final class MoviesListViewModel: MoviesListViewModelProtocol {
     @Published var error: String = ""
     
     var isEmpty: Bool { return movies.isEmpty }
-    private var pagenumber: Int = 1
+    var pageNumber: Int = 1
     
     private let moviesListUseCase: ShowMoviesListUseCase!
     
@@ -36,9 +38,11 @@ final class MoviesListViewModel: MoviesListViewModelProtocol {
     @MainActor func fetchMovies() async {
         do {
             
-            let moviesList = try await moviesListUseCase.fetchMoviesList(pageNumber: pagenumber)
-            self.movies = transformFetchedMovies(movies: moviesList.results)
+            let moviesList = try await moviesListUseCase.fetchMoviesList(pageNumber: pageNumber)
+            self.movies += transformFetchedMovies(movies: moviesList.results)
             self.isError = false
+            
+            pageNumber = 1 + (pageNumber <= moviesList.total_pages ? pageNumber : 0)
         } catch {
             self.isError = true
             if let networkError = error as? ServiceError {
@@ -54,7 +58,11 @@ final class MoviesListViewModel: MoviesListViewModelProtocol {
     }
     
     func shouldShowLoader() -> Bool {
-        return (isEmpty && !isError)
+        (isEmpty && !isError)
+    }
+    
+    func isLastMovie(_ movie: MovieData) -> Bool {
+        movies.last?.id == movie.id
     }
     
 }

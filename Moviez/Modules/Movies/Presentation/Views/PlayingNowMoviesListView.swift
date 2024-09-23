@@ -78,6 +78,11 @@ struct PlayingNowMoviesListView<ViewModel>: View where ViewModel: MoviesListView
                         } label: {
                             
                             GridMovieItemView(movie: movie, columns: self.$columns)
+                                .task {
+                                    if self.viewModel.isLastMovie(movie) {
+                                        await viewModel.fetchMovies()
+                                    }
+                                }
                         }
                     }
                 }
