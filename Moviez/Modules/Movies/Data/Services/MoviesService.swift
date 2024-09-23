@@ -7,10 +7,12 @@
 
 protocol MoviesService {
     func fetchTrendingMoviesList() async throws -> MoviesDataListDTO
+    func fetchPlayingNowMoviesList(pageNumber: Int) async throws -> MoviesDataListDTO
     func fetchMovieDetail(movieID: Int) async throws -> MovieDetailDTO
 }
 
 final class DefaultMoviesService: MoviesService {
+    
     private let apiDataService: DataTransferService
     
     init(apiDataService: DataTransferService) {
@@ -19,6 +21,10 @@ final class DefaultMoviesService: MoviesService {
     
     func fetchTrendingMoviesList() async throws -> MoviesDataListDTO {
         try await apiDataService.request(for: MovieEndpoints.trendingMovies)
+    }
+    
+    func fetchPlayingNowMoviesList(pageNumber: Int) async throws -> MoviesDataListDTO {
+        try await apiDataService.request(for: MovieEndpoints.nowPlayingMovies(pageNumber: pageNumber))
     }
     
     func fetchMovieDetail(movieID: Int) async throws -> MovieDetailDTO {

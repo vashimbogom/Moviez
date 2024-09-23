@@ -22,10 +22,7 @@ struct MoviesDashboardView: View {
                     
                     MoviesContainer.TrendingMoviesList
                     
-                    MoviesText(AppConstants.MovieStrings.nowPlayingMoviesTitle)
-                        .font(.title)
-                        .fontWeight(.bold)
-                    //TODO: - Create Now Playing Grid
+                    MoviesContainer.PlayingNowMoviesList
 
                 }
                 .padding(.vertical)

@@ -73,6 +73,24 @@
         }
       }
     },
+    "Original Language" : {
+      "comment" : "Movie's original Language",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Original Language"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lenguaje Original"
+          }
+        }
+      }
+    },
     "Please try again" : {
       "comment" : "Error message action  to try again",
       "extractionState" : "manual",

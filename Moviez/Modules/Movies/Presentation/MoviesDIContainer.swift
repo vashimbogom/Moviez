@@ -23,6 +23,11 @@ class MoviesDIContainer {
         let moviesModule = MoviesModule(apiDataTransferService: apiDataTransferService)
         return moviesModule.generateTrendingMoviesListView()
     }()
+    
+    lazy var PlayingNowMoviesList: PlayingNowMoviesListView = {
+        let moviesModule = MoviesModule(apiDataTransferService: apiDataTransferService)
+        return moviesModule.generatePlayingNowMoviesListView()
+    }()
 
     //MARK: - Movie Detail Views
     func getMovieDetailsView(movieID: Int) -> some View {

@@ -41,6 +41,22 @@ final class MoviesServiceTests: XCTestCase {
         }
     }
     
+    func testMoviesService_FetchPlayingNowMovies_Success() async throws {
+        mockDataTransferService.response = MovieViews_Previews.moviesPage
+        let moviesPage = try await moviesService.fetchPlayingNowMoviesList(pageNumber: 13)
+        XCTAssertEqual(moviesPage.results.count, 20)
+    }
+
+    func testMoviesService_FetchPlayingNowMovies_Failure() async throws {
+        mockDataTransferService.error = NSError(domain: "FailedError", code: 0)
+        do {
+            _ = try await moviesService.fetchPlayingNowMoviesList(pageNumber: 13)
+            XCTFail("Success not expected")
+        } catch {
+            XCTAssertNotNil(error)
+        }
+    }
+    
     func testMoviesService_FetchMovieDetails_Success() async throws {
         mockDataTransferService.response = MovieViews_Previews.movieDetailsDomain
         let movieDetails = try await moviesService.fetchMovieDetail(movieID: 13)

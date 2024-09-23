@@ -8,12 +8,19 @@
 @testable import Moviez
 
 final class MockMoviesService: MoviesService {
-        
+
     var movieListResponse: MoviesDataListDTO?
     var movieDetailsResponse: MovieDetailDTO?
     var error: Error?
     
     func fetchTrendingMoviesList() async throws -> MoviesDataListDTO {
+        if let error {
+            throw error
+        }
+        return movieListResponse!
+    }
+    
+    func fetchPlayingNowMoviesList(pageNumber: Int) async throws -> Moviez.MoviesDataListDTO {
         if let error {
             throw error
         }

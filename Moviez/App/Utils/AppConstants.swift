@@ -16,6 +16,13 @@ struct AppConstants {
             static let moviePlaceholderIcon = "movieclapper"
             static let popularityIcon = "popcorn.fill"
             static let favoriteIcon = "heart.circle"
+            static let listGridIcon = "rectangle.grid.1x2.fill"
+            static let squareGridIcon = "square.grid.2x2.fill"
+        }
+        
+        enum AnimationIdentifiers {
+            static let imageID = "image.id"
+            static let titleID = "title.id"
         }
         
         enum Mocks {
@@ -35,8 +42,10 @@ struct AppConstants {
         static let popularity = "Popularity"
         static let releaseDate = "Release Date"
         static let languages = "Languages"
+        static let originalLanguage = "Original Language"
         static let averageVote = "Average Vote"
         static let status = "Status"
+        
         
         enum Errors {
             static let title = "Ooops!! Something happened..."
