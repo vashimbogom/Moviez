@@ -27,7 +27,8 @@ struct MovieDetailView<ViewModel>: View where ViewModel: MovieDetailsViewModelPr
                 ProgressView()
                     .progressViewStyle(.circular)
                 
-            } else if viewModel.isError {
+            }
+            else if viewModel.isError {
                 
                 HStack {
                     MovieErrorView(errorTitle: AppConstants.MovieStrings.Errors.title, errorDescription: viewModel.error) {
@@ -37,7 +38,8 @@ struct MovieDetailView<ViewModel>: View where ViewModel: MovieDetailsViewModelPr
                     }
                 }
                 
-            } else {
+            }
+            else {
                 
                 ScrollView(.vertical, showsIndicators: false) {
                     VStack(spacing: 10) {
@@ -47,6 +49,7 @@ struct MovieDetailView<ViewModel>: View where ViewModel: MovieDetailsViewModelPr
                             .fontWeight(.bold)
                             .multilineTextAlignment(.center)
                             .padding([.leading, .trailing])
+                            .accessibilityIdentifier(AppConstants.Movies.AccessibilityIdentifiers.movieDetailTitle)
                         
                         ZStack {
                             MovieImageView(url: URL(string: viewModel.movie.imageURL))

@@ -29,6 +29,13 @@ struct AppConstants {
             static let favoriteID = "favorite.id"
         }
         
+        enum AccessibilityIdentifiers {
+            static let carouselMovieImage = "Carousel Movie Image"
+            static let movieDetailTitle = "Movie Detail Title"
+            static let sortingMoviesButton = "Sort Movies Button"
+            static let changeGridLayoutButton = "Change Movies View Layout"
+        }
+        
         enum Mocks {
             static let imageURL = "https://image.tmdb.org/t/p/w500/8cdWjvZQUExUUTzyp4t6EDMubfO.jpg"
             static let errorMessage = "Unknown error"

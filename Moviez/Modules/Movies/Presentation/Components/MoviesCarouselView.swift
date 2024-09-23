@@ -31,6 +31,7 @@ struct MoviesCarouselView: View {
                             .cornerRadius(20)
                             .padding(.horizontal)
                             .tag(index)
+                            .accessibilityIdentifier(AppConstants.Movies.AccessibilityIdentifiers.carouselMovieImage)
                         
                         Text(self.movies[index].title)
                             .fontWeight(.black)

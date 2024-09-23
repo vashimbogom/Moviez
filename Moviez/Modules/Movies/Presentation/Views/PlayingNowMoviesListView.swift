@@ -103,6 +103,7 @@ struct PlayingNowMoviesListView<ViewModel>: View where ViewModel: MoviesListView
                             .font(.system(size: 25))
                             .foregroundColor(colorScheme == .dark ? .accentColor : .black)
                         }
+                        .accessibilityIdentifier(AppConstants.Movies.AccessibilityIdentifiers.sortingMoviesButton)
                         
                         Button {
                             
@@ -123,6 +124,7 @@ struct PlayingNowMoviesListView<ViewModel>: View where ViewModel: MoviesListView
                             .font(.system(size: self.columns.count == 2 ? 23 : 25))
                             .foregroundColor(colorScheme == .dark ? .accentColor : .black)
                         }
+                        .accessibilityIdentifier(AppConstants.Movies.AccessibilityIdentifiers.changeGridLayoutButton)
                     }
                 }
                 .padding(.bottom)
