@@ -17,12 +17,15 @@ A cool app to find out Trending and Now Playing Movies powered by themoviedb.org
   * Vote average
 * As a User I should be able to save my favorite movies and I want to see my stored preferences when I open the app again (offline access).
 * As a User I should be able to keep scrolling and new results should appear (pagination).
+* As a User I should be able to search for a movie with a given title locally in real time.
 * * As a User I should see the different possible errors (error handling).
-  * UnitTesting
+  * UnitTesting/ Basic UITesting
 
 ## Bonus 🔥
 * Multi Language (EN, ES)
 * Dark Mode
+* Logger heleper
+* Local movies search feature
 * Modular Design
 * Architecture diagram
 
