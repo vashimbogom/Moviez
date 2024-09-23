@@ -18,6 +18,7 @@ struct AppConstants {
             static let favoriteIcon = "heart.circle"
             static let listGridIcon = "rectangle.grid.1x2.fill"
             static let squareGridIcon = "square.grid.2x2.fill"
+            static let sortingIcon = "arrow.up.arrow.down"
         }
         
         enum AnimationIdentifiers {

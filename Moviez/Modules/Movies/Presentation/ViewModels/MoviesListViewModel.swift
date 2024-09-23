@@ -16,7 +16,8 @@ protocol MoviesListViewModelProtocol: ObservableObject {
     var isEmpty: Bool {get}
     
     func shouldShowLoader() -> Bool
-    func isLastMovie(_ movie: MovieData) -> Bool 
+    func isLastMovie(_ movie: MovieData) -> Bool
+    func sortMovies()
     func fetchMovies() async
 }
 
@@ -30,6 +31,7 @@ final class MoviesListViewModel: MoviesListViewModelProtocol {
     var pageNumber: Int = 1
     
     private let moviesListUseCase: ShowMoviesListUseCase!
+    private var sortAscending = true
     
     init(useCase: ShowMoviesListUseCase) {
         self.moviesListUseCase = useCase
@@ -63,6 +65,15 @@ final class MoviesListViewModel: MoviesListViewModelProtocol {
     
     func isLastMovie(_ movie: MovieData) -> Bool {
         movies.last?.id == movie.id
+    }
+    
+    func sortMovies() {
+        if sortAscending {
+            movies = movies.sorted { $0.title < $1.title }
+        } else {
+            movies = movies.sorted { $0.title > $1.title }
+        }
+        sortAscending.toggle()
     }
     
 }

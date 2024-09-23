@@ -46,4 +46,15 @@ final class MoviesListViewModelTests: XCTestCase {
         XCTAssertEqual(moviesListViewModel.error, ServiceError.failed.description)
         XCTAssertTrue(moviesListViewModel.isError)
     }
+    
+    func testMoviesListViewModel_isLastMovie_Success() async throws {
+        mockShowTrendingMoviesUseCase.response = MovieViews_Previews.moviesPage
+        await moviesListViewModel.fetchMovies()
+        XCTAssertTrue(moviesListViewModel.movies.count == 20)
+        XCTAssertEqual(moviesListViewModel.movies.first?.title, "Deadpool & Wolverine")
+        moviesListViewModel.sortMovies()
+        XCTAssertEqual(moviesListViewModel.movies.first?.title, "A Quiet Place: Day One")
+        moviesListViewModel.sortMovies()
+        XCTAssertEqual(moviesListViewModel.movies.first?.title, "Uglies")
+    }
 }

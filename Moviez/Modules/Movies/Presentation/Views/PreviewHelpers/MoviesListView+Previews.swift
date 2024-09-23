@@ -58,6 +58,7 @@ struct MovieViews_Previews {
         func fetchMovies() async {}
         func isLastMovie(_ movie: MovieData) -> Bool { false }
         func shouldShowLoader() -> Bool {isEmpty && isError}
+        func sortMovies() {}
     }
 }
 

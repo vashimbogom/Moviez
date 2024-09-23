@@ -25,7 +25,8 @@ struct PlayingNowMoviesListView<ViewModel>: View where ViewModel: MoviesListView
                 ProgressView()
                     .progressViewStyle(.circular)
                 
-            } else if viewModel.isError {
+            }
+            else if viewModel.isError {
                 
                 HStack {
                     MovieErrorView(errorTitle: AppConstants.MovieStrings.Errors.title, errorDescription: viewModel.error) {
@@ -35,7 +36,8 @@ struct PlayingNowMoviesListView<ViewModel>: View where ViewModel: MoviesListView
                     }
                 }
                 
-            } else {
+            }
+            else {
                 
                 HStack {
                     
@@ -44,6 +46,20 @@ struct PlayingNowMoviesListView<ViewModel>: View where ViewModel: MoviesListView
                         .fontWeight(.bold)
                     
                     Spacer()
+                    
+                    Button {
+                        
+                        withAnimation(.easeInOut) {
+                            viewModel.sortMovies()
+                        }
+                        
+                    } label: {
+                        Image(
+                            systemName: AppConstants.Movies.Icons.sortingIcon
+                        )
+                        .font(.system(size: 25))
+                        .foregroundColor(.black)
+                    }
                     
                     Button {
                         
