@@ -11,6 +11,7 @@ struct PlayingNowMoviesListView<ViewModel>: View where ViewModel: MoviesListView
     
     @ObservedObject private var viewModel: ViewModel
     @State var columns = Array(repeating: GridItem(.flexible(), spacing: 13), count: 2)
+    @Environment(\.colorScheme) var colorScheme
     
     private let MovieContainer = MoviesDIContainer()
     
@@ -58,7 +59,7 @@ struct PlayingNowMoviesListView<ViewModel>: View where ViewModel: MoviesListView
                             systemName: AppConstants.Movies.Icons.sortingIcon
                         )
                         .font(.system(size: 25))
-                        .foregroundColor(.black)
+                        .foregroundColor(colorScheme == .dark ? .accentColor : .black)
                     }
                     
                     Button {
@@ -78,13 +79,13 @@ struct PlayingNowMoviesListView<ViewModel>: View where ViewModel: MoviesListView
                             : AppConstants.Movies.Icons.squareGridIcon
                         )
                         .font(.system(size: self.columns.count == 2 ? 23 : 25))
-                        .foregroundColor(.black)
+                        .foregroundColor(colorScheme == .dark ? .accentColor : .black)
                     }
                 }
                 .padding(.top)
                 .padding(.horizontal)
                 
-                LazyVGrid(columns: columns) {
+                LazyVGrid(columns: columns, spacing: 25) {
                     ForEach(self.viewModel.movies) { movie in
                         
                         NavigationLink {
@@ -94,6 +95,13 @@ struct PlayingNowMoviesListView<ViewModel>: View where ViewModel: MoviesListView
                         } label: {
                             
                             GridMovieItemView(movie: movie, columns: self.$columns)
+                                .background(
+                                    colorScheme == .dark ?
+                                    (self.columns.count == 2) ?
+                                        .clear : Color(cgColor: CGColor(red: 41/255, green: 42/255, blue: 48.0/255, alpha: 1))
+                                    : (self.columns.count == 2) ?
+                                        .clear : .white
+                                )
                                 .task {
                                     if self.viewModel.isLastMovie(movie) {
                                         await viewModel.fetchMovies()

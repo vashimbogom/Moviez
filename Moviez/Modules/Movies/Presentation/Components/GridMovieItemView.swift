@@ -29,6 +29,7 @@ struct GridMovieItemView: View {
                         .frame(width: itemWidth, height: 250)
                         .cornerRadius(10)
                         .aspectRatio(contentMode: .fit)
+                        .matchedGeometryEffect(id: AppConstants.Movies.AnimationIdentifiers.imageID, in: self.namespace)
                     
                     HStack {
                         Spacer()
@@ -41,12 +42,13 @@ struct GridMovieItemView: View {
                             .background(Color.white)
                             .cornerRadius(10)
                             .offset(x:5, y:-10)
+                            .matchedGeometryEffect(id: AppConstants.Movies.AnimationIdentifiers.favoriteID, in: self.namespace)
                     }
                     .offset(y:-100)
                     
                 }
                 .frame(width: itemWidth, height: 250)
-                .matchedGeometryEffect(id: AppConstants.Movies.AnimationIdentifiers.imageID, in: self.namespace)
+                
                 
                 Text(movie.title)
                     .fontWeight(.bold)
@@ -66,12 +68,12 @@ struct GridMovieItemView: View {
                         .frame(width: itemWidth, height: 250)
                         .cornerRadius(10)
                         .aspectRatio(contentMode: .fit)
+                        .matchedGeometryEffect(id: AppConstants.Movies.AnimationIdentifiers.imageID, in: self.namespace)
                     
                 }
                 .frame(width: itemWidth, height: 250)
-                .matchedGeometryEffect(id: AppConstants.Movies.AnimationIdentifiers.imageID, in: self.namespace)
                 
-                VStack {
+                VStack(alignment: .leading) {
                     
                     HStack {
                         Spacer()
@@ -84,6 +86,7 @@ struct GridMovieItemView: View {
                             .background(Color.white)
                             .cornerRadius(10)
                             .offset(y:-10)
+                            .matchedGeometryEffect(id: AppConstants.Movies.AnimationIdentifiers.favoriteID, in: self.namespace)
                     }
                     
                     VStack(alignment: .leading) {
@@ -93,16 +96,16 @@ struct GridMovieItemView: View {
                             .matchedGeometryEffect(id: AppConstants.Movies.AnimationIdentifiers.titleID, in: self.namespace)
                         
                         MoviesText(AppConstants.MovieStrings.originalLanguage)
-                        .font(.subheadline)
-                        .foregroundColor(.gray)
-                        .padding(.top,1)
+                            .font(.subheadline)
+                            .foregroundColor(.gray)
+                            .padding(.top,1)
                         Text(movie.originalLanguage)
                             .foregroundColor(.accentColor)
                         
                         MoviesText(AppConstants.MovieStrings.popularity)
-                        .foregroundColor(.gray)
-                        .padding(.top,3)
-                        .padding(.bottom,3)
+                            .foregroundColor(.gray)
+                            .padding(.top,3)
+                            .padding(.bottom,3)
                         
                         MoviePopularityView(rate: movie.popularityIndex)
                     }

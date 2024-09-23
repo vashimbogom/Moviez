@@ -24,6 +24,7 @@ struct AppConstants {
         enum AnimationIdentifiers {
             static let imageID = "image.id"
             static let titleID = "title.id"
+            static let favoriteID = "favorite.id"
         }
         
         enum Mocks {
