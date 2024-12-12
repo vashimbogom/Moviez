@@ -30,6 +30,7 @@ struct MoviesDashboardView: View {
             }
             .background(Color.gray.opacity(0.1).edgesIgnoringSafeArea(.all))
         }
+        .navigationViewStyle(StackNavigationViewStyle())
     }
 }
 
