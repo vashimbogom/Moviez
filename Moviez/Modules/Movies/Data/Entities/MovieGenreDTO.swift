@@ -8,4 +8,8 @@
 struct MovieGenreDTO: Decodable {
     let id: Int
     let name: String?
+    
+    func toDomain() -> MovieGenre {
+        MovieGenre(id: id, name: name ?? "")
+    }
 }

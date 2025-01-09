@@ -18,4 +18,18 @@ struct MovieDataDTO: Decodable, Identifiable {
     let release_date: String?
     let popularity: Double?
     let vote_average: Double?
+    
+    func toDomain() -> MovieData {
+        MovieData(
+            id: self.id,
+            title: self.title ?? "",
+            originalTitle: self.original_title ?? "",
+            overview: self.overview ?? "",
+            posterPath: self.poster_path ?? "",
+            originalLanguage: self.original_language ?? "",
+            releaseDateStr: self.release_date ?? "",
+            popularity: self.popularity ?? 0,
+            voteAverage: self.vote_average ?? 0
+        )
+    }
 }

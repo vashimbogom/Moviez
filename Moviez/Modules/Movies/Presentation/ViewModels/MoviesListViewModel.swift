@@ -45,11 +45,11 @@ final class MoviesListViewModel: MoviesListViewModelProtocol {
         do {
             
             let moviesList = try await moviesListUseCase.fetchMoviesList(pageNumber: pageNumber)
-            self.movies += transformFetchedMovies(movies: moviesList.results)
+            self.movies += moviesList.movies
             self.fetchedMovies = movies
             self.isError = false
             
-            pageNumber = 1 + (pageNumber <= moviesList.total_pages ? pageNumber : 0)
+            pageNumber = 1 + (pageNumber <= moviesList.totalPages ? pageNumber : 0)
         } catch {
             self.isError = true
             if let networkError = error as? ServiceError {
@@ -70,10 +70,6 @@ final class MoviesListViewModel: MoviesListViewModelProtocol {
             self.movies = self.fetchedMovies.filter { $0.title.localizedStandardContains(searchText) }
             
         }
-    }
-    
-    private func transformFetchedMovies(movies: [MovieDataDTO]) -> [MovieData] {
-        movies.map { MovieData(from: $0) }
     }
     
     func shouldShowLoader() -> Bool {

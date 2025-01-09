@@ -5,11 +5,7 @@
 //  Created by Lord Jose Lopez on 22/09/24.
 //
 
-protocol ShowTrendingMoviesUseCase: ShowMoviesListUseCase {
-    func fetchTrendingMoviesList() async throws -> MoviesDataListDTO
-}
-
-final class DefaultShowTrendingMoviesUseCase: ShowTrendingMoviesUseCase {
+final class DefaultShowTrendingMoviesUseCase: ShowMoviesListUseCase {
     
     private let repository: MoviesRepository
     
@@ -17,11 +13,8 @@ final class DefaultShowTrendingMoviesUseCase: ShowTrendingMoviesUseCase {
         self.repository = repository
     }
     
-    func fetchMoviesList(pageNumber: Int = 1) async throws -> MoviesDataListDTO {
-        try await fetchTrendingMoviesList()
+    func fetchMoviesList(pageNumber: Int = 1) async throws -> MoviesDataList {
+        try await repository.fetchTrendingMoviesList().toDomain()
     }
     
-    func fetchTrendingMoviesList() async throws -> MoviesDataListDTO {
-        try await repository.fetchTrendingMoviesList()
-    }
 }

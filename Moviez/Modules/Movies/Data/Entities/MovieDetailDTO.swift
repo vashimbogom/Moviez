@@ -21,4 +21,21 @@ struct MovieDetailDTO: Decodable, Identifiable {
     let genres: [MovieGenreDTO]
     let spoken_languages: [SpokenLanguageDTO]
     let status: String?
+    
+    func toDomain() -> MovieDetail {
+        MovieDetail(
+            id: id,
+            title: title ?? "",
+            originalTitle: original_title ?? "",
+            overview: overview ?? "",
+            posterPath: poster_path ?? "",
+            originalLanguage: original_language ?? "",
+            releaseDateStr: release_date ?? "",
+            popularity: popularity ?? 0,
+            voteAverage: vote_average ?? 0,
+            genres: genres.map { $0.toDomain() },
+            spokenLanguages: spoken_languages.map { $0.toDomain() },
+            status: status ?? ""
+        )
+    }
 }

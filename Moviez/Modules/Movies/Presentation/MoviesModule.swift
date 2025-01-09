@@ -24,7 +24,7 @@ final class MoviesModule {
         MoviesListViewModel(useCase: generateTrendingMoviesListUseCase())
     }
     
-    private func generateTrendingMoviesListUseCase() -> ShowTrendingMoviesUseCase {
+    private func generateTrendingMoviesListUseCase() -> ShowMoviesListUseCase {
         DefaultShowTrendingMoviesUseCase(repository: generateTrendingMoviesListRepository())
     }
     

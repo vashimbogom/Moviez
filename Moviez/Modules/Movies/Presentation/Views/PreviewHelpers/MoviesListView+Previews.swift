@@ -25,7 +25,7 @@ struct MovieViews_Previews {
     }
     
     static var moviesList: [MovieData] {
-        return domainMovies.map { .init(from: $0) }
+        return domainMovies.map { $0.toDomain() }
     }
     
     static var domainMovies: [MovieDataDTO] {
@@ -72,7 +72,7 @@ extension MovieViews_Previews {
     }
     
     static var movieDetails: MovieDetail {
-        return .init(from: movieDetailsDomain)
+        return movieDetailsDomain.toDomain()
     }
     
     static var movieDetailsDomain: MovieDetailDTO {

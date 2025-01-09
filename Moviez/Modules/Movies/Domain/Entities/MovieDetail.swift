@@ -22,54 +22,45 @@ struct MovieDetail: Decodable, Identifiable {
     let spokenLanguages: [SpokenLanguage]
     let status: String
     
-    init(from movieDetailDTO: MovieDetailDTO) {
-        self.id = movieDetailDTO.id
-        self.title = movieDetailDTO.title ?? ""
-        self.originalTitle = movieDetailDTO.original_title ?? ""
-        self.overview = movieDetailDTO.overview ?? ""
-        self.posterPath = movieDetailDTO.poster_path ?? ""
-        self.originalLanguage = movieDetailDTO.original_language?.uppercased() ?? ""
-        self.releaseDateStr = movieDetailDTO.release_date ?? ""
-        self.popularity = movieDetailDTO.popularity ?? 0
-        self.voteAverage = movieDetailDTO.vote_average ?? 0
-        
-        self.genres = movieDetailDTO.genres.map { .init(from: $0) }
-        self.spokenLanguages = movieDetailDTO.spoken_languages.map { .init(from: $0) }
-        self.status = movieDetailDTO.status ?? ""
+    init(
+        id: Int = 0,
+        title: String = "",
+        originalTitle: String = "",
+        overview: String = "",
+        posterPath: String = "",
+        originalLanguage: String = "",
+        releaseDateStr: String = "",
+        popularity: Double = 0,
+        voteAverage: Double = 0,
+        genres: [MovieGenre] = [],
+        spokenLanguages: [SpokenLanguage] = [],
+        status: String = "")
+    {
+        self.id = id
+        self.title = title
+        self.originalTitle = originalTitle
+        self.overview = overview
+        self.posterPath = posterPath
+        self.originalLanguage = originalLanguage
+        self.releaseDateStr = releaseDateStr
+        self.popularity = popularity
+        self.voteAverage = voteAverage
+        self.genres = genres
+        self.spokenLanguages = spokenLanguages
+        self.status = status
     }
-    
-    init() {
-        self.id = 0
-        self.title = ""
-        self.originalTitle = ""
-        self.overview = ""
-        self.posterPath = ""
-        self.originalLanguage = ""
-        self.releaseDateStr = ""
-        self.popularity = 0
-        self.voteAverage = 0
-        
-        self.genres = []
-        self.spokenLanguages = []
-        self.status = ""
-    }
-    
+}
+
+extension MovieDetail: MovieDataHelper {
     var popularityIndex: Int {
-        //according to records 1,500 or + can be considered 5 star, then:
-        Int(round(popularity*5.0/1500.0))
+        getPopularityIndex(popularity: popularity)
     }
     
     var releaseDate: Date {
-        
-        let dateFormater = DateFormatter()
-        dateFormater.dateFormat = "yyyy-mm-dd"
-        if let date = dateFormater.date(from: releaseDateStr) {
-            return date
-        }
-        return Date.distantPast
+        getReleaseDate(dateStr: releaseDateStr)
     }
     
     var imageURL: String {
-        "\(EnvironmentConfiguration.hostScheme)://\(EnvironmentConfiguration.imageURL)/t/p/w500\(posterPath)"
+        getImageURL(posterPath: posterPath)
     }
 }

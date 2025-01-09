@@ -6,7 +6,7 @@
 //
 
 protocol ShowMovieDetailsUseCase {
-    func fetchMovieDetails(movieID: Int) async throws -> MovieDetailDTO
+    func fetchMovieDetails(movieID: Int) async throws -> MovieDetail
 }
 
 final class DefaultShowMovieDetailsUseCase: ShowMovieDetailsUseCase {
@@ -17,7 +17,7 @@ final class DefaultShowMovieDetailsUseCase: ShowMovieDetailsUseCase {
         self.repository = repository
     }
     
-    func fetchMovieDetails(movieID: Int) async throws -> MovieDetailDTO {
-        try await repository.fetchMovieDetails(movieID: movieID)
+    func fetchMovieDetails(movieID: Int) async throws -> MovieDetail {
+        try await repository.fetchMovieDetails(movieID: movieID).toDomain()
     }
 }

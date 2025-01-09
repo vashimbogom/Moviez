@@ -11,4 +11,8 @@ struct MoviesDataListDTO: Decodable {
     let results: [MovieDataDTO]
     let total_pages: Int
     let total_results: Int
+    
+    func toDomain() -> MoviesDataList {
+        MoviesDataList(page: page, movies: results.map{$0.toDomain()}, totalPages: total_pages, totalResults: total_results)
+    }
 }

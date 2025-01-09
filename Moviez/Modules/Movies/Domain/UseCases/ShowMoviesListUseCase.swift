@@ -6,11 +6,11 @@
 //
 
 protocol ShowMoviesListUseCase {
-    func fetchMoviesList(pageNumber: Int) async throws -> MoviesDataListDTO
+    func fetchMoviesList(pageNumber: Int) async throws -> MoviesDataList
 }
 
 extension ShowMoviesListUseCase {
-    func fetchMoviesList(pageNumber: Int = 1) async throws -> MoviesDataListDTO {
+    func fetchMoviesList(pageNumber: Int = 1) async throws -> MoviesDataList {
         try await fetchMoviesList(pageNumber: pageNumber)
     }
 }

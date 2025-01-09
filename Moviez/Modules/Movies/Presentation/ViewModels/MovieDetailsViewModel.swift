@@ -37,8 +37,7 @@ final class MovieDetailsViewModel: MovieDetailsViewModelProtocol {
     
     @MainActor func fetchMovieDetails() async {
         do {
-            let movieDetail = try await movieDetailsUseCase.fetchMovieDetails(movieID: self.movieID)
-            self.movie = .init(from: movieDetail)
+            self.movie = try await movieDetailsUseCase.fetchMovieDetails(movieID: self.movieID)
             self.isError = false
         } catch {
             self.isError = true
