@@ -14,6 +14,6 @@ final class DefaultShowPlayingNowMoviesUseCase: ShowMoviesListUseCase {
     }
     
     func fetchMoviesList(pageNumber: Int = 1) async throws -> MoviesDataList {
-        try await repository.fetchPlayingNowMoviesList(pageNumber: pageNumber).toDomain()
+        try await repository.fetchPlayingNowMoviesList(pageNumber: pageNumber)
     }
 }

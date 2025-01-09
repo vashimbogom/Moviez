@@ -18,6 +18,6 @@ final class DefaultShowMovieDetailsUseCase: ShowMovieDetailsUseCase {
     }
     
     func fetchMovieDetails(movieID: Int) async throws -> MovieDetail {
-        try await repository.fetchMovieDetails(movieID: movieID).toDomain()
+        try await repository.fetchMovieDetails(movieID: movieID)
     }
 }

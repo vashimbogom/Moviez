@@ -6,7 +6,7 @@
 //
 
 protocol MoviesRepository {
-    func fetchTrendingMoviesList() async throws -> MoviesDataListDTO
-    func fetchPlayingNowMoviesList(pageNumber: Int) async throws -> MoviesDataListDTO
-    func fetchMovieDetails(movieID: Int) async throws -> MovieDetailDTO
+    func fetchTrendingMoviesList() async throws -> MoviesDataList
+    func fetchPlayingNowMoviesList(pageNumber: Int) async throws -> MoviesDataList
+    func fetchMovieDetails(movieID: Int) async throws -> MovieDetail
 }
