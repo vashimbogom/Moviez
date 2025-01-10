@@ -28,5 +28,5 @@ struct HMovieLabelView: View {
 }
 
 #Preview {
-    HMovieLabelView(title: AppConstants.MovieStrings.title, description: AppConstants.MovieStrings.title)
+    HMovieLabelView(title: AppConstants.Movies.Strings.title, description: AppConstants.Movies.Strings.title)
 }

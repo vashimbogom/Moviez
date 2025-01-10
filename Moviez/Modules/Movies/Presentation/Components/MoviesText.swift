@@ -21,5 +21,5 @@ struct MoviesText: View {
 }
 
 #Preview {
-    MoviesText(AppConstants.MovieStrings.trendingMoviesTitle)
+    MoviesText(AppConstants.Movies.Strings.trendingMoviesTitle)
 }

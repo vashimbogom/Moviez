@@ -34,7 +34,7 @@ struct MovieErrorView: View {
             } label: {
                 Text(
                     LocalizedStringResource(
-                        String.LocalizationValue(AppConstants.MovieStrings.Errors.tryAgain),
+                        String.LocalizationValue(AppConstants.Movies.Strings.Errors.tryAgain),
                         table: AppConstants.Movies.localizationTable))
                 .bold()
             }

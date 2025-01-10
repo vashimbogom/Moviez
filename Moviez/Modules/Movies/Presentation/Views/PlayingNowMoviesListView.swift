@@ -31,7 +31,7 @@ struct PlayingNowMoviesListView<ViewModel>: View where ViewModel: MoviesListView
             else if viewModel.isError {
                 
                 HStack {
-                    MovieErrorView(errorTitle: AppConstants.MovieStrings.Errors.title, errorDescription: viewModel.error) {
+                    MovieErrorView(errorTitle: AppConstants.Movies.Strings.Errors.title, errorDescription: viewModel.error) {
                         Task {
                             await viewModel.fetchMovies()
                         }
@@ -43,7 +43,7 @@ struct PlayingNowMoviesListView<ViewModel>: View where ViewModel: MoviesListView
                 
                 HStack {
                     
-                    MoviesText(AppConstants.MovieStrings.nowPlayingMoviesTitle)
+                    MoviesText(AppConstants.Movies.Strings.nowPlayingMoviesTitle)
                         .font(.title)
                         .fontWeight(.bold)
                     
@@ -62,7 +62,7 @@ struct PlayingNowMoviesListView<ViewModel>: View where ViewModel: MoviesListView
                             )
                         
                         TextField(text: $searchText) {
-                            Text(LocalizedStringResource(String.LocalizationValue(AppConstants.MovieStrings.search), table: AppConstants.Movies.localizationTable))
+                            Text(LocalizedStringResource(String.LocalizationValue(AppConstants.Movies.Strings.search), table: AppConstants.Movies.localizationTable))
                         }
                         .autocapitalization(.none)
                         .autocorrectionDisabled()

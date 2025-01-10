@@ -11,6 +11,25 @@ struct AppConstants {
         
         static let localizationTable = "LocalizableMovies"
         
+        enum Strings {
+            static let title = "Title"
+            static let trendingMoviesTitle = "Trending movies..."
+            static let nowPlayingMoviesTitle = "Now playing"
+            
+            static let popularity = "Popularity"
+            static let releaseDate = "Release Date"
+            static let languages = "Languages"
+            static let originalLanguage = "Original Language"
+            static let averageVote = "Average Vote"
+            static let status = "Status"
+            static let search = "Search"
+            
+            enum Errors {
+                static let title = "Ooops!! Something happened..."
+                static let tryAgain = "Please try again"
+            }
+        }
+        
         enum Icons {
             static let errorViewIcon = "exclamationmark.triangle.fill"
             static let moviePlaceholderIcon = "movieclapper"
@@ -44,26 +63,4 @@ struct AppConstants {
             static let nowPlayingMoviesJSONFile = "NowPlayingMoviesMock.json"
         }
     }
-    
-    enum MovieStrings {
-        static let title = "Title"
-        static let trendingMoviesTitle = "Trending movies..."
-        static let nowPlayingMoviesTitle = "Now playing"
-        
-        static let popularity = "Popularity"
-        static let releaseDate = "Release Date"
-        static let languages = "Languages"
-        static let originalLanguage = "Original Language"
-        static let averageVote = "Average Vote"
-        static let status = "Status"
-        static let search = "Search"
-        
-        enum Errors {
-            static let title = "Ooops!! Something happened..."
-            static let tryAgain = "Please try again"
-        }
-        
-        
-    }
-    
 }

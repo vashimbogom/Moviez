@@ -16,7 +16,7 @@ struct MoviesDashboardView: View {
             ScrollView(.vertical, showsIndicators: false) {
                 VStack {
                     
-                    MoviesText(AppConstants.MovieStrings.trendingMoviesTitle)
+                    MoviesText(AppConstants.Movies.Strings.trendingMoviesTitle)
                         .font(.title)
                         .fontWeight(.bold)
                     

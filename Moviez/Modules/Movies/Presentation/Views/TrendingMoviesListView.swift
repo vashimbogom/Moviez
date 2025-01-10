@@ -28,7 +28,7 @@ struct TrendingMoviesListView<ViewModel>: View where ViewModel: MoviesListViewMo
                 
                 HStack {
                     MovieErrorView(
-                        errorTitle: AppConstants.MovieStrings.Errors.title,
+                        errorTitle: AppConstants.Movies.Strings.Errors.title,
                         errorDescription: viewModel.error
                     ) {
                         Task {

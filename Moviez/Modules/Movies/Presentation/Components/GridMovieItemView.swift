@@ -95,14 +95,14 @@ struct GridMovieItemView: View {
                             .fontWeight(.bold)
                             .matchedGeometryEffect(id: AppConstants.Movies.AnimationIdentifiers.titleID, in: self.namespace)
                         
-                        MoviesText(AppConstants.MovieStrings.originalLanguage)
+                        MoviesText(AppConstants.Movies.Strings.originalLanguage)
                             .font(.subheadline)
                             .foregroundColor(.gray)
                             .padding(.top,1)
                         Text(movie.originalLanguage)
                             .foregroundColor(.accentColor)
                         
-                        MoviesText(AppConstants.MovieStrings.popularity)
+                        MoviesText(AppConstants.Movies.Strings.popularity)
                             .foregroundColor(.gray)
                             .padding(.top,3)
                             .padding(.bottom,3)
