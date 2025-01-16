@@ -31,7 +31,7 @@ struct MovieDetailView<ViewModel>: View where ViewModel: MovieDetailsViewModelPr
             else if viewModel.isError {
                 
                 HStack {
-                    MovieErrorView(errorTitle: AppConstants.MovieStrings.Errors.title, errorDescription: viewModel.error) {
+                    MovieErrorView(errorTitle: AppConstants.Movies.Strings.Errors.title, errorDescription: viewModel.error) {
                         Task {
                             await viewModel.fetchMovieDetails()
                         }
@@ -88,14 +88,14 @@ struct MovieDetailView<ViewModel>: View where ViewModel: MovieDetailsViewModelPr
                             .multilineTextAlignment(.center)
                             .padding()
                         
-                        HMovieLabelView(title: AppConstants.MovieStrings.popularity, description: "\(viewModel.movie.popularity)")
+                        HMovieLabelView(title: AppConstants.Movies.Strings.popularity, description: "\(viewModel.movie.popularity)")
                         MoviePopularityView(rate: viewModel.movie.popularityIndex)
                         
-                        HMovieLabelView(title: AppConstants.MovieStrings.releaseDate, description: viewModel.movie.releaseDateStr)
+                        HMovieLabelView(title: AppConstants.Movies.Strings.releaseDate, description: viewModel.movie.releaseDateStr)
                         
                         Text(
                             LocalizedStringResource(
-                                String.LocalizationValue(AppConstants.MovieStrings.languages),
+                                String.LocalizationValue(AppConstants.Movies.Strings.languages),
                                 table: AppConstants.Movies.localizationTable)
                         )
                         .font(.footnote)
@@ -108,9 +108,9 @@ struct MovieDetailView<ViewModel>: View where ViewModel: MovieDetailsViewModelPr
                             }
                         }
                         
-                        HMovieLabelView(title: AppConstants.MovieStrings.averageVote, description: "\(viewModel.movie.voteAverage)")
+                        HMovieLabelView(title: AppConstants.Movies.Strings.averageVote, description: "\(viewModel.movie.voteAverage)")
                         
-                        HMovieLabelView(title: AppConstants.MovieStrings.status, description: viewModel.movie.status)
+                        HMovieLabelView(title: AppConstants.Movies.Strings.status, description: viewModel.movie.status)
                         
                         
                         Spacer()
